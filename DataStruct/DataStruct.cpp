@@ -8,7 +8,6 @@ int main()
     L1 = Read();
     Print(L1);
     L2 = Reverse(L1);
-    Print(L1);
     Print(L2);
     return 0;
 }

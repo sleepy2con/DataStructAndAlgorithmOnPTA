@@ -6,6 +6,9 @@ typedef struct Node* PtrToNode;
 struct Node {
     int Data;
     PtrToNode   Next;
+    Node():Data(0),Next(NULL)
+    {
+    }
 };
 typedef PtrToNode List;
 
