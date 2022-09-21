@@ -18,13 +18,33 @@
     <ClCompile Include="DataStruct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="pub.cpp">
+    <ClCompile Include="6.1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="t6_2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="t6_5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pub.h">
+    <ClInclude Include="6.1.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="t6_2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="t6_5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DataStruct.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

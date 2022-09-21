@@ -1,46 +1,46 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#include "6.1.h"
-#include "t6_2.h"
+//#include "6.1.h"
+//#include "t6_2.h"
+#include "t6_5.h"
 
 int main()
 {
-    // 6.1
-  /*  List L1, L2;
-    L1 = Read();
-    Print(L1);
-    L2 = Reverse(L1);
-    Print(L2);*/
     List L;
     ElementType X;
-    Position P;
+    Position P, tmp;
     int N;
 
-    L = MakeEmpty();
-    scanf("%d", &N);
+    L = NULL;
+    scanf_s("%d", &N);
     while (N--) {
-        scanf("%d", &X);
-        if (Insert(L, X, 0) == false)
-            printf(" Insertion Error: %d is not in.\n", X);
+        scanf_s("%d", &X);
+        L = Insert(L, X, L);
+        if (L == ERROR) printf("Wrong Answer\n");
     }
-    scanf("%d", &N);
+    scanf_s("%d", &N);
     while (N--) {
-        scanf("%d", &X);
+        scanf_s("%d", &X);
         P = Find(L, X);
         if (P == ERROR)
             printf("Finding Error: %d is not in.\n", X);
-        else
-            printf("%d is at position %d.\n", X, P);
+        else {
+            L = Delete(L, P);
+            printf("%d is found and deleted.\n", X);
+            if (L == ERROR)
+                printf("Wrong Answer or Empty List.\n");
+        }
     }
-    scanf("%d", &N);
-    while (N--) {
-        scanf("%d", &P);
-        if (Delete(L, P) == false)
-            printf(" Deletion Error.\n");
-        if (Insert(L, 0, P) == false)
-            printf(" Insertion Error: 0 is not in.\n");
-    }
-    return 0;
+    L = Insert(L, X, NULL);
+    if (L == ERROR) printf("Wrong Answer\n");
+    else
+        printf("%d is inserted as the last element.\n", X);
+    P = (Position)malloc(sizeof(struct LNode));
+    tmp = Insert(L, X, P);
+    if (tmp != ERROR) printf("Wrong Answer\n");
+    tmp = Delete(L, P);
+    if (tmp != ERROR) printf("Wrong Answer\n");
+    for (P = L; P; P = P->Next) printf("%d ", P->Data);
     return 0;
 }
 

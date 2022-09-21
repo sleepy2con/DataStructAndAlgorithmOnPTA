@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAXSIZE 5
+#define MAXSIZE 3
 #define ERROR -1
 //typedef enum { false, true } bool;
 typedef int ElementType;
