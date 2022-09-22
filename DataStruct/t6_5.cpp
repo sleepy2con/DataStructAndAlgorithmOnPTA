@@ -1,22 +1,25 @@
 #include "t6_5.h"
 Position Find(List L, ElementType X)
 {
-    Position pos = 0;
+    Position pos = NULL;
     int ifFindX = 0;
     while (L)
     {
         if (L->Data == X)
         {
             ifFindX = 1;
+            pos = L;
+            break;
         }
-        pos++;
+        L = L->Next;
     }
     if (ifFindX) return pos;
     else return ERROR;
 }
 List Insert(List L, ElementType X, Position P)
 {
-    if (!L) // 如果头节点为空
+
+    if (!L) // 如果头节点为空      // 在头节点插入
     {
         List tempNode = (List)malloc(sizeof(struct LNode));
         tempNode->Data = X;
@@ -24,16 +27,18 @@ List Insert(List L, ElementType X, Position P)
         return tempNode;
     }
 
-    List head = L;
-    Position i = 0;
+    List nodeBeforeHead = (List)malloc(sizeof(struct LNode));
+    nodeBeforeHead->Next = L;
+
     int insertSuccess = 0;
-    List LastPtr = head;
+    List LastPtr = nodeBeforeHead;
     while (L)
     {
-        if (i++ == P)
+        if (L == P)
         {
             insertSuccess = 1;
             List tempNode = (List)malloc(sizeof(struct LNode));
+            L = LastPtr->Next;
             LastPtr->Next = tempNode;
             tempNode->Data = X;
             tempNode->Next = L;
@@ -43,22 +48,34 @@ List Insert(List L, ElementType X, Position P)
         L = L->Next;
     }
 
-    if (insertSuccess) return head;
+    if (P == NULL)      // 末尾插入节点、
+    {
+        List tempNode = (List)malloc(sizeof(struct LNode));
+        tempNode->Data = X;
+        tempNode->Next = NULL;
+        LastPtr->Next = tempNode;
+        insertSuccess = 1;
+    }
+
+    L = nodeBeforeHead->Next;
+    free(nodeBeforeHead);
+    if (insertSuccess) return L;
     else
     {
-        printf("Wrong Position for Insertion");
+        printf("Wrong Position for Insertion\n");
         return ERROR;
     }
 }
 List Delete(List L, Position P)
 {
     List head = L;
-    Position i = 0;
     int deleteSuccess = 0;
-    List LastPtr = head;
+    List nodeBeforeHead = (List)malloc(sizeof(struct LNode));
+    nodeBeforeHead->Next = L;
+    List LastPtr = nodeBeforeHead;
     while (L)
     {
-        if (i++ == P)
+        if (L == P)
         {
             deleteSuccess = 1;
             List tempNode = L;
@@ -69,10 +86,13 @@ List Delete(List L, Position P)
         LastPtr = L;
         L = L->Next;
     }
-    if (deleteSuccess) return head;
+
+    L = nodeBeforeHead->Next;
+    free(nodeBeforeHead);
+    if (deleteSuccess) return L;
     else
     {
-        printf("Wrong Position for Insertion");
+        printf("Wrong Position for Deletion\n");
         return ERROR;
     }
 }
