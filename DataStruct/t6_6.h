@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #define ERROR NULL
+//typedef enum { false, true } bool;
 typedef int ElementType;
 typedef struct LNode* PtrToLNode;
 struct LNode {
@@ -12,9 +13,10 @@ struct LNode {
 typedef PtrToLNode Position;
 typedef PtrToLNode List;
 
-namespace t6_5 {
-    Position Find(List L, ElementType X);
-    List Insert(List L, ElementType X, Position P);
-    List Delete(List L, Position P);
-}
+namespace t6_6 {
 
+List MakeEmpty();
+Position Find(List L, ElementType X);
+bool Insert(List L, ElementType X, Position P);
+bool Delete(List L, Position P);
+}

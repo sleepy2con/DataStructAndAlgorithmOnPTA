@@ -1,8 +1,13 @@
-#include "t6_5.h"
-namespace t6_5
+#include "t6_6.h"
+namespace t6_6
 {
-
-
+	List MakeEmpty()
+	{
+		List list = (List)malloc(sizeof(struct LNode));
+		list->Data = 0;
+		list->Next = NULL;
+		return list;
+	}
 	Position Find(List L, ElementType X)
 	{
 		Position pos = NULL;
@@ -20,15 +25,14 @@ namespace t6_5
 		if (ifFindX) return pos;
 		else return ERROR;
 	}
-	List Insert(List L, ElementType X, Position P)
+	bool Insert(List L, ElementType X, Position P)
 	{
-
 		if (!L) // 如果头节点为空      // 在头节点插入
 		{
 			List tempNode = (List)malloc(sizeof(struct LNode));
 			tempNode->Data = X;
 			tempNode->Next = NULL;
-			return tempNode;
+			return true;
 		}
 
 		List nodeBeforeHead = (List)malloc(sizeof(struct LNode));
@@ -63,14 +67,14 @@ namespace t6_5
 
 		L = nodeBeforeHead->Next;
 		free(nodeBeforeHead);
-		if (insertSuccess) return L;
+		if (insertSuccess) return true;
 		else
 		{
 			printf("Wrong Position for Insertion\n");
-			return ERROR;
+			return false;
 		}
 	}
-	List Delete(List L, Position P)
+	bool Delete(List L, Position P)
 	{
 		List head = L;
 		int deleteSuccess = 0;
@@ -93,11 +97,11 @@ namespace t6_5
 
 		L = nodeBeforeHead->Next;
 		free(nodeBeforeHead);
-		if (deleteSuccess) return L;
+		if (deleteSuccess) return true;
 		else
 		{
 			printf("Wrong Position for Deletion\n");
-			return ERROR;
+			return false;
 		}
 	}
 

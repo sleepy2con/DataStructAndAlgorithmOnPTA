@@ -2,21 +2,23 @@
 #include <stdlib.h>
 //#include "6.1.h"
 //#include "t6_2.h"
-#include "t6_5.h"
-
+//#include "t6_5.h"
+#include "t6_6.h"
+using namespace t6_6;
 int main()
 {
     List L;
     ElementType X;
-    Position P, tmp;
+    Position P;
     int N;
+    bool flag;
 
-    L = NULL;
+    L = MakeEmpty();
     scanf_s("%d", &N);
     while (N--) {
         scanf_s("%d", &X);
-        L = Insert(L, X, L);
-        if (L == ERROR) printf("Wrong Answer\n");
+        flag = Insert(L, X, L->Next);
+        if (flag == false) printf("Wrong Answer\n");
     }
     scanf_s("%d", &N);
     while (N--) {
@@ -25,22 +27,22 @@ int main()
         if (P == ERROR)
             printf("Finding Error: %d is not in.\n", X);
         else {
-            L = Delete(L, P);
+            flag = Delete(L, P);
             printf("%d is found and deleted.\n", X);
-            if (L == ERROR)
-                printf("Wrong Answer or Empty List.\n");
+            if (flag == false)
+                printf("Wrong Answer.\n");
         }
     }
-    L = Insert(L, X, NULL);
-    if (L == ERROR) printf("Wrong Answer\n");
+    flag = Insert(L, X, NULL);
+    if (flag == false) printf("Wrong Answer\n");
     else
         printf("%d is inserted as the last element.\n", X);
     P = (Position)malloc(sizeof(struct LNode));
-    tmp = Insert(L, X, P);
-    if (tmp != ERROR) printf("Wrong Answer\n");
-    tmp = Delete(L, P);
-    if (tmp != ERROR) printf("Wrong Answer\n");
-    for (P = L; P; P = P->Next) printf("%d ", P->Data);
+    flag = Insert(L, X, P);
+    if (flag == true) printf("Wrong Answer\n");
+    flag = Delete(L, P);
+    if (flag == true) printf("Wrong Answer\n");
+    for (P = L->Next; P; P = P->Next) printf("%d ", P->Data);
     return 0;
 }
 

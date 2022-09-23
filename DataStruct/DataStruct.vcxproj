@@ -131,12 +131,14 @@
     <ClCompile Include="6.1.cpp" />
     <ClCompile Include="t6_2.cpp" />
     <ClCompile Include="t6_5.cpp" />
+    <ClCompile Include="t6_6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="6.1.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="t6_2.h" />
     <ClInclude Include="t6_5.h" />
+    <ClInclude Include="t6_6.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DataStruct.rc" />

@@ -12,8 +12,11 @@ struct LNode {
     ElementType Data[MAXSIZE];
     Position Last; /* 保存线性表中最后一个元素的位置 */
 };
+namespace t6_2
+{
+    List MakeEmpty();
+    Position Find(List L, ElementType X);
+    bool Insert(List L, ElementType X, Position P);
+    bool Delete(List L, Position P);
+}
 
-List MakeEmpty();
-Position Find(List L, ElementType X);
-bool Insert(List L, ElementType X, Position P);
-bool Delete(List L, Position P);
