@@ -5,7 +5,7 @@
 #define ERROR 1e8
 typedef int ElementType;
 typedef enum { push, pop, end } Operation;
-typedef enum { false, true } bool;
+//typedef enum { false, true } bool;
 typedef int Position;
 struct SNode {
     ElementType* Data;
@@ -18,7 +18,7 @@ namespace t6_7
 {
     Stack CreateStack(int MaxSize);
     bool Push(Stack S, ElementType X, int Tag);
-    ElementType Pop(Stack S, int Tag);
+    ElementType Pop(Stack S, int Tag); // Tag «∂—’ª±‡∫≈£¨»°1ªÚ2
 
     Operation GetOp();  /* details omitted */
     void PrintStack(Stack S, int Tag); /* details omitted */
