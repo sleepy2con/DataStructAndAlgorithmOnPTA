@@ -12,7 +12,7 @@ namespace t6_7
 	}
 	bool Push(Stack S, ElementType X, int Tag)
 	{
-		if (S->Top1 == S->Top2)
+		if (S->Top1 > S->Top2)
 		{
 			printf("Stack Full\n");
 			return 0;
@@ -58,10 +58,33 @@ namespace t6_7
 	}
 	void PrintStack(Stack S, int Tag) /* details omitted */
 	{
+		int i = 0,lim = S->MaxSize;
+		if (Tag == 1)
+		{
+			lim = S->Top1;
+		}
+		else
+		{
+			i = S->Top2+1;
+		}
+
+		printf("Tag%d:", 2);
+		for (int i = S->Top2 + 1;i<S->MaxSize; i++)
+		{
+			printf("%d ", S->Data[i]);
+		}
+		printf("\n");
+		printf("Tag%d:", 1);
+		for (int i = 0; i < S->Top1; i++)
+		{
+			printf("%d ", S->Data[i]);
+		}
+		printf("\n");
+		printf("all the data:");
 		for (int i = 0; i < S->MaxSize; i++)
 		{
 			printf("%d ", S->Data[i]);
 		}
-		puts("\n");
+		printf("\n\n");
 	}
 }
